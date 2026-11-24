@@ -10,9 +10,10 @@ function renderSocial(){
 }
 function renderProducts(){
   const list=products.filter(p=>p.inStock!==false);
-  $("#empty").hidden=list.length>0;
-  $("#products").innerHTML=list.length?list.map(p=>`<div class="card">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}">`:'<div class="ph"></div>'}<h4>${esc(p.name)}</h4>${p.size?`<div>${esc(p.size)}</div>`:""}<div class="price">${p.price} ${cur}</div><button type="button" data-id="${esc(p.id)}">أضف للسلة</button></div>`).join(""):
-   [1,2,3,4].map(()=>`<div class="card"><div class="ph"></div><h4>قريبًا</h4><div class="price">&nbsp;</div></div>`).join("");
+  const live=list.length>0&&C.ordersOpen;
+  document.body.classList.toggle("pre",!live);
+  $("#catalog").hidden=!live;$("#steps").hidden=!live;$("#openCart").hidden=!live;
+  $("#products").innerHTML=live?list.map(p=>`<div class="card">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}">`:'<div class="ph"></div>'}<h4>${esc(p.name)}</h4>${p.size?`<div>${esc(p.size)}</div>`:""}<div class="price">${p.price} ${cur}</div><button type="button" data-id="${esc(p.id)}">أضف للسلة</button></div>`).join(""):"";
   document.querySelectorAll("#products button").forEach(b=>b.onclick=()=>{cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;renderCart();openDrawer()});
 }
 const lines=()=>Object.keys(cart).map(id=>{const p=products.find(x=>x.id===id);return p?{id,name:p.name,price:p.price,qty:cart[id]}:null}).filter(Boolean);
@@ -29,7 +30,7 @@ function renderCart(){
   document.querySelectorAll("[data-u]").forEach(b=>b.onclick=()=>{cart[b.dataset.u]++;renderCart()});
 }
 const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c||""};
-function show(step){["step1","form","done"].forEach(i=>$("#"+i).hidden=i!==step);$("#dtitle").textContent=step==="form"?"بياناتك":"السلة";msg("")}
+function show(step){["step1","form","done"].forEach(i=>$("#"+i).hidden=i!==step);$("#dtitle").textContent=step==="form"?"بياناتك":step==="done"?"تم":"السلة";msg("")}
 function openDrawer(){$("#drawer").classList.add("open");$("#shade").hidden=false;$("#drawer").setAttribute("aria-hidden","false");if(!$("#done").hidden)show("step1")}
 function closeDrawer(){$("#drawer").classList.remove("open");$("#shade").hidden=true;$("#drawer").setAttribute("aria-hidden","true")}
 async function submit(e){
@@ -49,7 +50,7 @@ async function submit(e){
   b.disabled=false;
 }
 async function init(){
-  renderSocial();$("#payNote").textContent=C.paymentNote;
+  renderSocial();
   try{const j=await (await fetch("products.json",{cache:"no-cache"})).json();products=j.products||[];cur=j.currency||cur}catch(e){}
   cart=Object.fromEntries(Object.entries(cart).filter(([id])=>products.some(p=>p.id===id)));
   renderProducts();renderCart();
