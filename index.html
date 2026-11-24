@@ -4,30 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الطيب | ELTAYP Perfume</title>
-<meta name="description" content="الطيب | ELTAYP. اختار عطرك واطلب من الموقع. الدفع عند الاستلام.">
+<meta name="description" content="الطيب | ELTAYP. متجر عطور قيد التجهيز.">
 <link rel="icon" href="logo.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="bar">الدفع عند الاستلام · بنأكد كل طلب بالتليفون</div>
+<div class="bar">الموقع قيد التجهيز · الطلب هيفتح قريبًا</div>
 <header class="top">
   <img src="logo-wide.png" alt="ELTAYP Perfume" class="brand">
   <button class="cartbtn" id="openCart" aria-label="السلة">السلة <span id="count">0</span></button>
 </header>
 <main>
 <section class="hero">
-  <h1>عطور بتتاخد بهدوء</h1>
-  <p>اختار عطرك، ضيفه للسلة، وكمّل الطلب في خطوتين.</p>
-  <a class="btn" href="#catalog">شوف العطور</a>
+  <h1>الطيب قريبًا</h1>
+  <p id="heroP">بنجهز العطور والأسعار. أول ما تتأكد هتلاقيها هنا وتقدر تطلب من الموقع.</p>
 </section>
 <section id="catalog" class="wrap">
-  <h2>العطور</h2>
+  <h2 id="catH">العطور</h2>
   <div id="products" class="grid"></div>
-  <p id="empty" class="note" hidden>العطور قيد التجهيز. الأسعار والتشكيلة هتتنزل هنا أول ما تتأكد.</p>
+  
 </section>
-<section class="wrap steps">
-  <div><b>١</b><span>اختار</span></div><div><b>٢</b><span>اكتب بياناتك</span></div><div><b>٣</b><span>بنكلمك نأكد</span></div><div><b>٤</b><span>استلم وادفع</span></div>
-</section>
+<section class="wrap steps" id="steps"><div><b>١</b><span>اختار</span></div><div><b>٢</b><span>اكتب بياناتك</span></div><div><b>٣</b><span>ابعت الطلب</span></div></section>
 </main>
 
 <div id="shade" hidden></div>
@@ -37,8 +34,7 @@
     <ul id="cart"></ul>
     <p id="cartEmpty" class="note">السلة فاضية.</p>
     <p class="total">الإجمالي: <b id="total">0</b> <span class="cur"></span></p>
-    <p class="note" id="payNote"></p>
-    <button class="btn full" id="toCheckout">كمّل الطلب</button>
+        <button class="btn full" id="toCheckout">كمّل الطلب</button>
   </div>
   <form id="form" novalidate hidden>
     <label>الاسم <input name="name" required autocomplete="name"></label>
@@ -51,7 +47,7 @@
     <button class="btn full" type="submit" id="send">ابعت الطلب</button>
     <button class="link" type="button" id="back">رجوع للسلة</button>
   </form>
-  <div id="done" hidden><h3>وصلنا طلبك</h3><p>هنكلمك على رقمك نأكد التفاصيل والتوصيل.</p><button class="btn full" id="closeDone">تمام</button></div>
+  <div id="done" hidden><h3>وصلنا طلبك</h3><p>هنراجع الطلب ونتواصل معاك على رقمك.</p><button class="btn full" id="closeDone">تمام</button></div>
   <p id="msg" role="status"></p>
 </aside>
 <footer><div id="social"></div><p>© ELTAYP</p></footer>
