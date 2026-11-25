@@ -46,6 +46,17 @@ function renderCart(){
   document.querySelectorAll("[data-u]").forEach(b=>b.onclick=()=>{cart[b.dataset.u]++;renderCart()});
 }
 const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c||""};
+function applySettings(s){
+  const t=(sel,v)=>{if(typeof v==="string"&&v!==""){const e=document.querySelector(sel);if(e)e.textContent=v}};
+  t(".reqbar",s.banner_req);t(".prebar",s.banner_pre);
+  t(".storehero h1",s.hero_store_title);t(".storehero p",s.hero_store_sub);
+  t(".cathero h1",s.hero_cat_title);t(".cathero p",s.hero_cat_sub);
+  t(".prehero h1",s.hero_pre_title);t(".prehero p",s.hero_pre_sub);
+  t(".fcols > div:first-child p",s.footer_about);
+  if(s.orders_open==="false")C.ordersOpen=false;
+  ["instagram","facebook","tiktok"].forEach(k=>{const v=s["social_"+k];if(typeof v==="string")C.social[k]=v});
+  renderSocial();
+}
 function show(step){["step1","form","done"].forEach(i=>$("#"+i).hidden=i!==step);$("#dtitle").textContent=step==="form"?"بياناتك":step==="done"?"تم":"السلة";msg("")}
 function openDrawer(){$("#drawer").classList.add("open");$("#shade").hidden=false;$("#drawer").setAttribute("aria-hidden","false");if(!$("#done").hidden)show("step1")}
 function closeDrawer(){$("#drawer").classList.remove("open");$("#shade").hidden=true;$("#drawer").setAttribute("aria-hidden","true")}
@@ -79,6 +90,12 @@ async function init(){
       }catch(e2){}
     }
     if(!loaded){const j=await (await fetch("products.json",{cache:"no-cache"})).json();products=j.products||[];cur=j.currency||cur}
+  }catch(e){}
+  try{
+    if(C.supabaseUrl&&C.supabaseAnonKey){
+      const r=await fetch(C.supabaseUrl+"/rest/v1/web_settings?select=key,value",{headers:{apikey:C.supabaseAnonKey,Authorization:"Bearer "+C.supabaseAnonKey},cache:"no-store"});
+      if(r.ok){const s={};(await r.json()).forEach(x=>s[x.key]=x.value);applySettings(s)}
+    }
   }catch(e){}
   cart=Object.fromEntries(Object.entries(cart).filter(([id])=>products.some(p=>p.id===id)));
   renderProducts();renderCart();
