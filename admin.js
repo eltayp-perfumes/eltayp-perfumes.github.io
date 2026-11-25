@@ -34,7 +34,7 @@ function refresh(){showSec(sec)}
 /* الطلبات */
 async function load(first){
   try{
-    const r=await fetch(API+"/rest/v1/web_orders?select=*&order=created_at.desc&limit=200",{headers:H()});
+    const r=await fetch(API+"/rest/v1/web_orders?select=*&order=created_at.desc&limit=200",{headers:H(),cache:"no-store"});
     if(authFail(r))return;
     if(!r.ok)throw 0;
     orders=await r.json();
@@ -71,7 +71,7 @@ async function setStatus(id,s){
 /* المنتجات */
 async function loadProducts(){
   try{
-    const r=await fetch(API+"/rest/v1/web_products?select=*&order=sort.asc,id.asc",{headers:H()});
+    const r=await fetch(API+"/rest/v1/web_products?select=*&order=sort.asc,id.asc",{headers:H(),cache:"no-store"});
     if(authFail(r))return;
     if(!r.ok)throw 0;
     products=await r.json();prodLoaded=true;stamp();renderProducts();
@@ -182,7 +182,7 @@ async function delProduct(id){
 /* الشحن */
 async function loadShipping(){
   try{
-    const r=await fetch(API+"/rest/v1/web_shipping?select=*&order=governorate.asc",{headers:H()});
+    const r=await fetch(API+"/rest/v1/web_shipping?select=*&order=governorate.asc",{headers:H(),cache:"no-store"});
     if(authFail(r))return;
     if(!r.ok)throw 0;
     shipping=await r.json();shipLoaded=true;stamp();renderShipping();
