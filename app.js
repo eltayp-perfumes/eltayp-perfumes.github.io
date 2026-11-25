@@ -74,7 +74,7 @@ async function init(){
     let loaded=false;
     if(C.supabaseUrl&&C.supabaseAnonKey){
       try{
-        const r=await fetch(C.supabaseUrl+"/rest/v1/web_products?select=id,name,name_en,size,price,copy,category,note,image_url,sort&in_stock=eq.true&order=sort.asc,id.asc",{headers:{apikey:C.supabaseAnonKey,Authorization:"Bearer "+C.supabaseAnonKey}});
+        const r=await fetch(C.supabaseUrl+"/rest/v1/web_products?select=id,name,name_en,size,price,copy,category,note,image_url,sort&in_stock=eq.true&order=sort.asc,id.asc",{headers:{apikey:C.supabaseAnonKey,Authorization:"Bearer "+C.supabaseAnonKey},cache:"no-store"});
         if(r.ok){const rows=await r.json();products=rows.map(p=>({id:p.id,name:p.name,name_en:p.name_en||"",size:p.size||"",price:p.price,copy:p.copy||"",category:p.category||"",note:p.note||"",image:p.image_url||""}));loaded=true}
       }catch(e2){}
     }
