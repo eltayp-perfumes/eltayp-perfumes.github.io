@@ -60,6 +60,7 @@
         <button type="button" data-v="orders" class="on">الطلبات</button>
         <button type="button" data-v="products">المنتجات والأسعار</button>
         <button type="button" data-v="shipping">الشحن</button>
+        <button type="button" data-v="settings">الإعدادات</button>
       </div>
       <div><span id="upd" class="note"></span> <button class="link" id="refresh" type="button">تحديث</button> <button class="link" id="logout" type="button">خروج</button></div>
     </div>
@@ -72,6 +73,25 @@
       <div class="pacts"><button type="button" id="addp" class="save">+ أضف منتج جديد</button></div>
       <div id="plist"></div>
     </div>
+    <div id="sec-settings" hidden>
+      <p class="note">نصوص الموقع وروابط السوشيال. الحفظ بينزل على الموقع على طول.</p>
+      <div class="frm">
+        <label class="chk full"><input type="checkbox" name="orders_open"> الطلب مفتوح على الموقع (لو شلت الصح، الموقع يعرض المنتجات من غير سلة ولا استلام طلبات)</label>
+        <label class="full">الشريط العلوي (لما الطلب مفتوح)<textarea name="banner_req" rows="2"></textarea></label>
+        <label class="full">الشريط العلوي (لما الطلب مقفول)<textarea name="banner_pre" rows="2"></textarea></label>
+        <label>عنوان الصفحة (وضع البيع)<input name="hero_store_title"></label>
+        <label>الجملة تحته<input name="hero_store_sub"></label>
+        <label>عنوان وضع الكتالوج<input name="hero_cat_title"></label>
+        <label>الجملة تحته<input name="hero_cat_sub"></label>
+        <label>عنوان وضع "قريبًا"<input name="hero_pre_title"></label>
+        <label>الجملة تحته<input name="hero_pre_sub"></label>
+        <label class="full">فقرة "عن ELTAYP" تحت الموقع<textarea name="footer_about" rows="2"></textarea></label>
+        <label class="full">رابط انستجرام<input name="social_instagram" dir="ltr"></label>
+        <label class="full">رابط فيسبوك (سيبه فاضي لو مفيش)<input name="social_facebook" dir="ltr"></label>
+        <label class="full">رابط تيك توك (سيبه فاضي لو مفيش)<input name="social_tiktok" dir="ltr"></label>
+      </div>
+      <button type="button" class="btn" id="saveset">حفظ الإعدادات</button>
+    </div>
     <div id="sec-shipping" hidden>
       <p class="note">سعر الشحن التقديري لكل محافظة بالجنيه. سيب الخانة فاضية لو الشحن مش متاح للمحافظة دي حاليًا (الطلب منها هيقف).</p>
       <div id="shiplist"></div>
@@ -81,6 +101,6 @@
   <p id="msg" role="status"></p>
 </div>
 <script src="config.js?v=2"></script>
-<script src="admin.js?v=3"></script>
+<script src="admin.js?v=4"></script>
 </body>
 </html>
