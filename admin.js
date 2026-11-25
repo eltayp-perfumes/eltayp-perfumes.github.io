@@ -24,9 +24,10 @@ function authFail(r){if(r.status===401||r.status===403){out();msg("انتهت ا
 function showSec(s){
   sec=s;
   document.querySelectorAll("#vtabs button").forEach(b=>b.classList.toggle("on",b.dataset.v===s));
-  $("#sec-orders").hidden=s!=="orders";$("#sec-products").hidden=s!=="products";$("#sec-shipping").hidden=s!=="shipping";
+  $("#sec-orders").hidden=s!=="orders";$("#sec-products").hidden=s!=="products";$("#sec-shipping").hidden=s!=="shipping";$("#sec-settings").hidden=s!=="settings";
   if(s==="products")loadProducts();
   if(s==="shipping")loadShipping();
+  if(s==="settings")loadSettings();
   if(s==="orders")load();
 }
 function refresh(){showSec(sec)}
@@ -208,6 +209,36 @@ async function saveShipping(){
     msg("أسعار الشحن اتحفظت ✅");loadShipping();
   }catch(x){msg("الحفظ ماتمش. جرّب تاني.","err")}
 }
+
+/* الإعدادات */
+const SETKEYS=["orders_open","banner_req","banner_pre","hero_store_title","hero_store_sub","hero_cat_title","hero_cat_sub","hero_pre_title","hero_pre_sub","footer_about","social_instagram","social_facebook","social_tiktok"];
+async function loadSettings(){
+  try{
+    const r=await fetch(API+"/rest/v1/web_settings?select=key,value",{headers:H(),cache:"no-store"});
+    if(authFail(r))return;
+    if(!r.ok)throw 0;
+    const s={};(await r.json()).forEach(x=>s[x.key]=x.value);
+    SETKEYS.forEach(k=>{
+      const e=document.querySelector("#sec-settings [name="+k+"]");if(!e)return;
+      if(k==="orders_open"){e.checked=s[k]!=="false"}else{e.value=s[k]==null?"":s[k]}
+    });
+    stamp();
+  }catch(x){msg("مش قادر أحمّل الإعدادات. جرّب تحدّث.","err")}
+}
+async function saveSettings(){
+  msg("بحفظ الإعدادات...");
+  try{
+    const rows=SETKEYS.map(k=>{
+      const e=document.querySelector("#sec-settings [name="+k+"]");
+      return {key:k,value:k==="orders_open"?(e.checked?"true":"false"):e.value};
+    });
+    const r=await fetch(API+"/rest/v1/web_settings",{method:"POST",headers:Object.assign(H(),{Prefer:"resolution=merge-duplicates,return=minimal"}),body:JSON.stringify(rows)});
+    if(authFail(r))return;
+    if(!r.ok)throw 0;
+    msg("الإعدادات اتحفظت ✅ ظاهرة على الموقع دلوقتي.");loadSettings();
+  }catch(x){msg("الحفظ ماتمش. جرّب تاني.","err")}
+}
+$("#saveset").onclick=saveSettings;
 
 $("#login").addEventListener("submit",login);
 $("#logout").onclick=out;$("#refresh").onclick=refresh;
