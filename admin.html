@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>طلبات ELTAYP</title>
+<title>إدارة ELTAYP</title>
 <link rel="icon" href="logo.png">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -23,11 +23,32 @@
 .acts button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 12px;font:inherit;cursor:pointer}
 .acts button.cur{background:var(--g);color:#fff;border-color:var(--g)}
 #upd{background:none;padding:0;font-size:.8rem;color:#7a858c;display:block}.bar2>div:last-child{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.badge{display:inline-block;border-radius:10px;padding:0 8px;font-size:.8rem;background:#eef3f2;color:var(--g)}
+.pcard{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px;background:#fff}
+.pcard .h{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700;margin-bottom:8px}
+.pcard .h .off{color:#b3261e;font-weight:400;font-size:.85rem}
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.frm label{display:flex;flex-direction:column;gap:4px;font-size:.85rem;color:#37474f}
+.frm label.full{grid-column:1/-1}
+.frm input,.frm select,.frm textarea{border:1px solid var(--line);border-radius:8px;padding:6px 8px;font:inherit;background:#fff}
+.frm .chk{flex-direction:row;align-items:center;gap:8px}
+.frm .chk input{width:auto}
+.imgrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.imgrow img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.imgrow input[type=file]{font-size:.85rem;max-width:260px}
+.pacts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.pacts button{border:1px solid var(--line);border-radius:8px;padding:6px 16px;font:inherit;cursor:pointer;background:#fff}
+.pacts .save{background:var(--g);color:#fff;border-color:var(--g)}
+.pacts .del{color:#b3261e}
+.shiprow{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:6px 0}
+.shiprow span{flex:1}
+.shiprow input{width:110px;border:1px solid var(--line);border-radius:8px;padding:5px 8px;font:inherit;text-align:center}
+#saveship{margin-top:12px}
+@media(max-width:560px){.frm{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="adm">
-  <h1>طلبات الموقع</h1>
+  <h1>إدارة موقع ELTAYP</h1>
   <form id="login" novalidate>
     <label>الإيميل<input name="email" type="email" autocomplete="username" dir="ltr"></label>
     <label>كلمة السر<input name="password" type="password" autocomplete="current-password" dir="ltr"></label>
@@ -35,10 +56,27 @@
   </form>
   <div id="panel" hidden>
     <div class="bar2">
-      <div class="tabs" id="tabs"></div>
+      <div class="tabs" id="vtabs">
+        <button type="button" data-v="orders" class="on">الطلبات</button>
+        <button type="button" data-v="products">المنتجات والأسعار</button>
+        <button type="button" data-v="shipping">الشحن</button>
+      </div>
       <div><span id="upd" class="note"></span> <button class="link" id="refresh" type="button">تحديث</button> <button class="link" id="logout" type="button">خروج</button></div>
     </div>
-    <div id="list"></div>
+    <div id="sec-orders">
+      <div class="bar2"><div class="tabs" id="tabs"></div></div>
+      <div id="list"></div>
+    </div>
+    <div id="sec-products" hidden>
+      <p class="note">أي تعديل هنا بينزل على الموقع على طول بعد الحفظ. اللي يظهر للعميل بس المنتجات المتاحة.</p>
+      <div class="pacts"><button type="button" id="addp" class="save">+ أضف منتج جديد</button></div>
+      <div id="plist"></div>
+    </div>
+    <div id="sec-shipping" hidden>
+      <p class="note">سعر الشحن التقديري لكل محافظة بالجنيه. سيب الخانة فاضية لو الشحن مش متاح للمحافظة دي حاليًا (الطلب منها هيقف).</p>
+      <div id="shiplist"></div>
+      <button type="button" class="btn" id="saveship">حفظ أسعار الشحن</button>
+    </div>
   </div>
   <p id="msg" role="status"></p>
 </div>
