@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الطيب | ELTAYP Perfume</title>
-<meta name="description" content="الطيب | ELTAYP. متجر عطور قيد التجهيز.">
+<meta name="description" content="الطيب | ELTAYP. عطور مستوحاة ١٠٠ مل. الدفع نقدي عند الاستلام.">
 <link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bar reqbar">طلب مبدئي: بنأكد معاك التوفر والسعر النهائي قبل أي تنفيذ. مفيش دفع مقدم ولا وعد بميعاد.</div>
 <div class="bar prebar">الموقع قيد التجهيز · الطلب هيفتح قريبًا</div>
 <header class="top">
   <img src="logo-wide.png" alt="ELTAYP Perfume" class="brand">
@@ -20,12 +22,13 @@
   <p id="heroP">بنجهز العطور والأسعار. أول ما تتأكد هتلاقيها هنا وتقدر تطلب من الموقع.</p>
 </section>
 <section class="hero storehero"><h1>عطور ELTAYP</h1><p>اختار عطرك وأضفه للسلة وكمّل الطلب.</p></section>
+<section class="hero cathero"><h1>عطور ELTAYP</h1><p>عطور ١٠٠ مل مستوحاة من أشهر العطور العالمية.</p></section>
 <section id="catalog" class="wrap">
   <h2 id="catH">العطور</h2>
   <div id="products" class="grid"></div>
   
 </section>
-<section class="wrap steps" id="steps"><div><b>١</b><span>اختار</span></div><div><b>٢</b><span>اكتب بياناتك</span></div><div><b>٣</b><span>ابعت الطلب</span></div></section>
+<section class="wrap steps" id="steps"><div><b>١</b><span>اختار</span></div><div><b>٢</b><span>اكتب بياناتك</span></div><div><b>٣</b><span>ابعت طلب مبدئي</span></div></section>
 </main>
 
 <div id="shade" hidden></div>
@@ -34,24 +37,34 @@
   <div id="step1">
     <ul id="cart"></ul>
     <p id="cartEmpty" class="note">السلة فاضية.</p>
-    <p class="total">الإجمالي: <b id="total">0</b> <span class="cur"></span></p>
+    <p class="total">الإجمالي: <b id="total">0</b> <span class="cur"></span> <small>(مبدئي، من غير توصيل)</small></p>
         <button class="btn full" id="toCheckout">كمّل الطلب</button>
   </div>
   <form id="form" novalidate hidden>
     <label>الاسم <input name="name" required autocomplete="name"></label>
     <label>رقم التليفون <input name="phone" required inputmode="tel" autocomplete="tel" placeholder="01xxxxxxxxx"></label>
-    <label>المحافظة <input name="city" required autocomplete="address-level1"></label>
-    <label>العنوان بالتفصيل <textarea name="address" rows="2" required autocomplete="street-address"></textarea></label>
+    <label>المحافظة <select name="city" id="gov" required autocomplete="address-level1"><option value="">اختار المحافظة</option></select></label>
+    <label>العنوان (اختياري، هنأكده معاك) <textarea name="address" rows="2" autocomplete="street-address"></textarea></label>
     <label>ملاحظات (اختياري) <textarea name="notes" rows="2"></textarea></label>
     <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <p class="total">الإجمالي: <b id="total2">0</b> <span class="cur"></span></p>
-    <button class="btn full" type="submit" id="send">ابعت الطلب</button>
+    <p class="ship" id="shipRow">اختار المحافظة عشان يظهر سعر الشحن.</p>
+    <p class="note">بنستخدم الاسم والتليفون عشان نتواصل معاك بخصوص الطلب بس.</p>
+    <p class="note">لو الطلب اتأكد، الدفع نقدي عند الاستلام. مفيش دفع على الموقع.</p>
+    <p class="sub">المنتجات: <b id="sub2">0</b> <span class="cur"></span></p>
+    <p class="total">الإجمالي التقديري: <b id="total2">0</b> <span class="cur"></span></p>
+    <button class="btn full" type="submit" id="send">ابعت طلب مبدئي</button>
     <button class="link" type="button" id="back">رجوع للسلة</button>
   </form>
-  <div id="done" hidden><h3>وصلنا طلبك</h3><p>هنراجع الطلب ونتواصل معاك على رقمك.</p><button class="btn full" id="closeDone">تمام</button></div>
+  <div id="done" hidden><h3>وصلنا طلبك المبدئي</h3><p>هنتواصل معاك بالتليفون نأكد التوفر والسعر النهائي. ده مش تأكيد شراء، ومفيش دفع دلوقتي.</p><button class="btn full" id="closeDone">تمام</button></div>
   <p id="msg" role="status"></p>
 </aside>
-<footer><div id="social"></div><p>© ELTAYP</p></footer>
+<footer class="foot">
+  <div class="fcols">
+    <div><h5>عن ELTAYP</h5><p>ELTAYP براند عطور مستوحاة من أشهر العطور العالمية، بعبوات ١٠٠ مل. العطور مستوحاة وليست النسخ الأصلية.</p></div>
+    <div><h5>تواصل معانا</h5><p>للتواصل معانا: انستجرام.</p><div id="social"></div></div>
+  </div>
+  <p class="copy">© ELTAYP</p>
+</footer>
 <script src="config.js"></script>
 <script src="app.js"></script>
 </body>
