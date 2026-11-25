@@ -1,1 +1,100 @@
-{"currency":"ج.م","products":[]}
+{
+ "currency": "ج.م",
+ "products": [
+  {
+   "id": "sauvage-edp",
+   "name": "سوفاج أو دو برفيوم",
+   "name_en": "Dior Sauvage EDP",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "برغموت وفلفل ولاڤندر على قاعدة عنبر وفانيليا.",
+   "category": "رجالي"
+  },
+  {
+   "id": "bleu-de-chanel",
+   "name": "بلو شانيل",
+   "name_en": "Bleu de Chanel",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "حمضيات وخشب صندل وبخور (حسب الإصدار).",
+   "category": "رجالي",
+   "note": "التركيز (EDT/EDP/برفيوم) بيتأكد قبل الطلب."
+  },
+  {
+   "id": "creed-aventus",
+   "name": "كريد أفينتوس",
+   "name_en": "Creed Aventus",
+   "size": "100 مل",
+   "price": 599,
+   "copy": "أناناس وكشمش أسود وبتولا ومسك.",
+   "category": "رجالي"
+  },
+  {
+   "id": "ysl-y-edp",
+   "name": "واي أو دو برفيوم",
+   "name_en": "YSL Y EDP",
+   "size": "100 مل",
+   "price": 499,
+   "copy": "تفاح أخضر وجنزبيل على قاعدة خشبية.",
+   "category": "رجالي"
+  },
+  {
+   "id": "invictus-parfum",
+   "name": "إنفكتوس برفيوم",
+   "name_en": "Rabanne Invictus Parfum",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "نفحات بحرية مع لاڤندر ومسك.",
+   "category": "رجالي"
+  },
+  {
+   "id": "spicebomb",
+   "name": "سبايس بومب",
+   "name_en": "Viktor&Rolf Spicebomb",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "فلفل وقرفة وزعفران على قاعدة تبغ وجلد (حسب الإصدار).",
+   "category": "رجالي",
+   "note": "الإصدار (EDT أو إكستريم) بيتأكد قبل الطلب."
+  },
+  {
+   "id": "212-sexy-men",
+   "name": "٢١٢ سكسي من",
+   "name_en": "Carolina Herrera 212 Sexy Men",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "حمضيات وهيل وفانيليا على قاعدة خشبية.",
+   "category": "رجالي"
+  },
+  {
+   "id": "baccarat-rouge-540",
+   "name": "باكارات روج ٥٤٠",
+   "name_en": "MFK Baccarat Rouge 540",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "زعفران وياسمين وعنبر وخشب أرز (حسب الإصدار).",
+   "category": "للجنسين",
+   "note": "التركيز (EDP أو إكستريه) بيتأكد قبل الطلب."
+  },
+  {
+   "id": "ysl-libre-edp",
+   "name": "ليبر أو دو برفيوم (كوليكتور إيديشن)",
+   "name_en": "YSL Libre EDP Collector Edition",
+   "size": "100 مل",
+   "price": 499,
+   "copy": "لاڤندر وزهر البرتقال وفانيليا.",
+   "category": "نسائي",
+   "note": "الإصدار المرجعي: كوليكتور إيديشن. التفاصيل بتتأكد قبل الطلب."
+  },
+  {
+   "id": "la-vie-est-belle",
+   "name": "لا ڤي إيست بيل",
+   "name_en": "Lancome La Vie est Belle",
+   "size": "100 مل",
+   "price": 549,
+   "copy": "برالينيه وفانيليا وزهرة الآيرس (حسب الإصدار).",
+   "category": "نسائي",
+   "note": "التركيز بيتأكد قبل الطلب."
+  }
+ ]
+}
