@@ -88,6 +88,7 @@ function renderProducts(){
   bindCards();
 }
 function cardHtml(p,isNew){
+  p=p||{};
   return `<div class="pcard" data-id="${esc(p.id||"")}" data-new="${isNew?"1":""}">
     <div class="h"><span>${isNew?"منتج جديد":esc(p.name)} <span class="m" dir="ltr">${esc(p.id||"")}</span></span>${p&&p.in_stock===false?'<span class="off">مش ظاهر على الموقع</span>':""}</div>
     <div class="frm">
