@@ -61,7 +61,7 @@ async function submit(e){
   if(!C.supabaseUrl||!C.supabaseAnonKey)return msg("الطلب مش متفعّل لسه.","err");
   const b=$("#send");b.disabled=true;msg("بنبعت الطلب...");
   try{
-    const r=await fetch(C.supabaseUrl+"/rest/v1/web_orders",{method:"POST",headers:{apikey:C.supabaseAnonKey,Authorization:"Bearer "+C.supabaseAnonKey,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({customer_name:d.name.trim(),phone,city:d.city.trim(),address:d.address.trim()||"يتأكد مع العميل",notes:"[تجربة] "+d.notes.trim(),items:L,total:total()})});
+    const r=await fetch(C.supabaseUrl+"/rest/v1/web_orders",{method:"POST",headers:{apikey:C.supabaseAnonKey,Authorization:"Bearer "+C.supabaseAnonKey,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({customer_name:d.name.trim(),phone,city:d.city.trim(),address:d.address.trim()||"يتأكد مع العميل",notes:"[طلب مبدئي] "+d.notes.trim(),items:L,total:total()})});
     if(!r.ok)throw new Error(r.status);
     cart={};renderCart();e.target.reset();show("done");
   }catch(x){msg("حصلت مشكلة وطلبك ماوصلش. جرّب تاني بعد شوية.","err")}
