@@ -37,3 +37,7 @@ input:focus,textarea:focus{outline:2px solid var(--g)}
 #msg{min-height:1.4em;font-weight:600}.ok{color:var(--g)}.err{color:#a33}
 footer{text-align:center;padding:24px;color:#7a858c}footer a{color:var(--g);margin:0 8px}
 body.pre .hero{padding:70px 20px 80px}
+
+body:not(.pre) .prebar,body:not(.pre) .prehero,body.pre .storehero{display:none}
+.storehero{padding:26px 20px 14px}
+.grid{grid-template-columns:repeat(2,1fr)}@media(min-width:800px){.grid{grid-template-columns:repeat(4,1fr)}}.card h4{font-size:.95rem}
