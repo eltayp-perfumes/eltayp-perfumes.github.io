@@ -53,7 +53,7 @@ async function submit(e){
   e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
   if(d.website)return;
   const phone=(d.phone||"").replace(/[\s-]/g,"").replace(/[٠-٩]/g,x=>"٠١٢٣٤٥٦٧٨٩".indexOf(x));
-  if(!d.name.trim()||!d.city.trim()))return msg("كمّل الاسم والمحافظة.","err");
+  if(!d.name.trim()||!d.city.trim())return msg("كمّل الاسم والمحافظة.","err");
   if(!(d.city in (C.shipping||{})))return msg("اختار المحافظة من القايمة.","err");
   if(typeof govFee()!=="number")return msg("سعر الشحن للمحافظة دي لسه مش محدد.","err");
   if(!/^(\+?20|0)?1[0125]\d{8}$/.test(phone))return msg("رقم التليفون مش مظبوط.","err");
